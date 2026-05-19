@@ -1,0 +1,20 @@
+# Core
+torch>=2.1.0
+torchaudio>=2.1.0
+
+# Config
+omegaconf>=2.3.0
+
+# Logging
+tensorboard>=2.14.0
+
+# Optional: W&B logging
+# wandb>=0.16.0
+
+# Optional: perceptual metrics
+# pesq>=0.0.4
+# pystoi>=0.3.3
+
+# Dev / testing
+pytest>=7.0.0
+numpy>=1.24.0

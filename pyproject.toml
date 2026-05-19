@@ -1,0 +1,68 @@
+[build-system]
+requires      = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name        = "wavtokenizer"
+version     = "0.1.0"
+description = "PyTorch implementation of WavTokenizer (ICLR 2025)"
+readme      = "README.md"
+requires-python = ">=3.10"
+license     = { text = "MIT" }
+keywords    = ["audio", "codec", "tokenizer", "speech", "deep-learning"]
+
+dependencies = [
+    "torch>=2.1.0",
+    "torchaudio>=2.1.0",
+    "omegaconf>=2.3.0",
+    "numpy>=1.24.0",
+]
+
+[project.optional-dependencies]
+train = [
+    "tensorboard>=2.14.0",
+    "wandb>=0.16.0",
+]
+eval = [
+    "pesq>=0.0.4",
+    "pystoi>=0.3.3",
+]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-cov>=4.1.0",
+    "ruff>=0.1.0",
+]
+all = [
+    "wavtokenizer[train,eval,dev]",
+]
+
+[project.scripts]
+wavtok-train    = "scripts.train:main"
+wavtok-evaluate = "scripts.evaluate:main"
+wavtok-infer    = "scripts.inference:main"
+wavtok-profile  = "scripts.profile:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["model*", "losses*", "data*", "training*", "evaluation*", "utils*", "scripts*"]
+
+# ─── pytest ───────────────────────────────────────────────────────────────────
+[tool.pytest.ini_options]
+testpaths    = ["tests"]
+addopts      = "-v --tb=short -x"
+filterwarnings = [
+    "ignore::FutureWarning",
+    "ignore::UserWarning",
+]
+
+# ─── ruff (linter) ───────────────────────────────────────────────────────────
+[tool.ruff]
+line-length    = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select  = ["E", "F", "I", "W"]
+ignore  = ["E501"]    # line-length handled by formatter
+
+[tool.ruff.lint.isort]
+known-first-party = ["model", "losses", "data", "training", "evaluation", "utils", "scripts"]

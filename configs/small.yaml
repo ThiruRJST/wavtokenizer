@@ -1,0 +1,44 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# WavTokenizer  —  Small / Debug Configuration
+# Inherits default.yaml;  only overrides are listed here.
+# ─────────────────────────────────────────────────────────────────────────────
+
+defaults:
+  - default
+
+project:
+  run_name: small_debug
+
+audio:
+  segment_duration: 0.5
+
+encoder:
+  base_channels: 8
+  latent_dim: 64
+
+quantizer:
+  codebook_size: 256
+  embedding_dim: 64
+
+decoder:
+  hidden: 64
+  n_convnext: 2
+  n_heads: 4
+  istft_n_fft: 640
+  istft_hop_length: 320
+
+training:
+  epochs: 5
+  batch_size: 4
+  mixed_precision: false         # disable AMP for CPU-only testing
+  log_interval: 2
+  save_interval: 2
+  disc_start_epoch: 0
+
+loss:
+  lambda_mel: 1.0                # lower weight for fast iteration
+  mel_scales: [512, 1024]
+
+data:
+  use_libritts: false
+  use_custom: false              # uses dummy dataset when both are false
