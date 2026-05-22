@@ -100,7 +100,7 @@ scheduler:
 data:
   # ---- LibriTTS  (auto-downloaded) ----
   use_libritts: true
-  libritts_root: data/libritts
+  libritts_root: data\libritts
   libritts_splits:               # torchaudio split names
     - train-clean-100
     - train-clean-360

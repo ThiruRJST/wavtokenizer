@@ -161,6 +161,7 @@ class LibriTTSDataset(Dataset):
 
         raw_datasets = []
         for split in splits:
+            print(root)
             ds = torchaudio.datasets.LIBRITTS(
                 root=root, url=split, download=download
             )

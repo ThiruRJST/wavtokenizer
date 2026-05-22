@@ -1,0 +1,6 @@
+.venv/
+checkpoints/
+data/libritts/
+wavtokenizer.egg-info/
+logs/
+__pycache__/

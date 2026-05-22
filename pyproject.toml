@@ -1,6 +1,6 @@
 [build-system]
 requires      = ["setuptools>=68", "wheel"]
-build-backend = "setuptools.backends.legacy:build"
+build-backend = "setuptools.build_meta"
 
 [project]
 name        = "wavtokenizer"
@@ -12,10 +12,9 @@ license     = { text = "MIT" }
 keywords    = ["audio", "codec", "tokenizer", "speech", "deep-learning"]
 
 dependencies = [
-    "torch>=2.1.0",
-    "torchaudio>=2.1.0",
     "omegaconf>=2.3.0",
     "numpy>=1.24.0",
+    "torchcodec>=0.13.0",
 ]
 
 [project.optional-dependencies]
